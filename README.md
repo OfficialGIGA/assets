@@ -1,81 +1,42 @@
-# Trust Wallet Assets Info
+# TrustWallet Token Submissions
 
-![Check](https://github.com/trustwallet/assets/workflows/Check/badge.svg)
+This is my fork of [trustwallet/assets](https://github.com/trustwallet/assets), used to submit pull requests adding tokens I deployed on Base mainnet to the official TrustWallet asset registry.
 
-## Overview
+## Tokens Deployed
 
-Trust Wallet token repository is a comprehensive, up-to-date collection of information about several thousands (!) of crypto tokens.
+| Token | Symbol | Network | Contract Address |
+|-------|--------|---------|------------------|
+| WealthAI | WAI | Base | [`0xb7D17C61242b8659e186bBC2E96Dc9D5a524c3Db`](https://basescan.org/address/0xb7D17C61242b8659e186bBC2E96Dc9D5a524c3Db) |
+| GIGA | GIGA | Base | [`0x5E2a88E5903642C5e944D31247887bB13F350Dc4`](https://basescan.org/address/0x5E2a88E5903642C5e944D31247887bB13F350Dc4) |
+| VIBE | VIBE | Base | [`0x8A09a9683B5401bf1fa80d1724c103c035A4EA22`](https://basescan.org/address/0x8A09a9683B5401bf1fa80d1724c103c035A4EA22) |
 
-[Trust Wallet](https://trustwallet.com) uses token logos from this source, alongside a number of other projects.
+All three are live ERC-20 contracts deployed to [Base](https://base.org) (Coinbase's Ethereum L2, chainId 8453).
 
-The repository contains token info from several blockchains, info on dApps, staking validators, etc.
-For every token a logo and optional additional information is available (such data is not available on-chain).
+## Pull Requests Submitted to trustwallet/assets
 
-Such a large collection can be maintained only through a community effort, so _feel free to add your token_.
+| PR | Token | Date |
+|----|-------|------|
+| [#32876](https://github.com/trustwallet/assets/pull/32876) | WealthAI (WAI) on Base | Jul 30, 2025 |
+| [#32531](https://github.com/trustwallet/assets/pull/32531) | GIGA Token (Base) | Jul 11, 2025 |
+| [#32404](https://github.com/trustwallet/assets/pull/32404) | VIBE Token (Base) | Jul 4, 2025 |
+| [#32396](https://github.com/trustwallet/assets/pull/32396) | VIBE Token on Base with logo and metadata | Jul 3, 2025 |
+| [#32395](https://github.com/trustwallet/assets/pull/32395) | VIBE Token (Base) | Jul 1, 2025 |
+| [#31957](https://github.com/trustwallet/assets/pull/31957) | GIGA info.json and logo for Base | Jun 7, 2025 |
+| [#31923](https://github.com/trustwallet/assets/pull/31923) | GIGA token info.json and logo | Jun 6, 2025 |
+| [#31913](https://github.com/trustwallet/assets/pull/31913) | GIGA info.json (Trust Wallet registry) | Jun 5, 2025 |
 
-<center><img src='https://trustwallet.com/assets/images/media/assets/horizontal_blue.png' height="200"></center>
+[Full list of my PRs on trustwallet/assets →](https://github.com/trustwallet/assets/pulls?q=is%3Apr+author%3AOfficialGIGA)
 
-## How to add token
+## About trustwallet/assets
 
-Please note that __brand new tokens are not accepted__,
-the projects have to be sound, with information available, and __non-minimal circulation__
-(for limit details see <https://developer.trustwallet.com/listing-new-assets/requirements>).
+The [trustwallet/assets](https://github.com/trustwallet/assets) repository is the public asset registry powering [Trust Wallet](https://trustwallet.com/), one of the largest non-custodial crypto wallets. It catalogs metadata, logos, and listings for tokens across every supported chain — being listed there makes a token discoverable and properly displayed inside the wallet's interface.
 
-### Assets App
+## Related Repositories
 
-The [Assets web app](https://assets.trustwallet.com) can be used for most new token additions (Github account is needed).
+- [WealthAI](https://github.com/OfficialGIGA/WealthAI) — WealthAI (WAI) token contract source
+- [VIBE-1.0](https://github.com/OfficialGIGA/VIBE-1.0) — VIBE token project
+- [VaultOS_Ultimate](https://github.com/OfficialGIGA/VaultOS_Ultimate) — VaultOS project
 
-### Quick starter
+---
 
-Details of the repository structure and contribution guidelines are listed on the
-[Developers site](https://developer.trustwallet.com/listing-new-assets/new-asset).
-Here is a quick starter summary for the most common use case.
-
-
-## Documentation
-
-For details, see the [Developers site](https://developer.trustwallet.com):
-
-- [Contribution guidelines](https://developer.trustwallet.com/listing-new-assets/repository_details)
-
-- [FAQ](https://developer.trustwallet.com/listing-new-assets/faq)
-
-## Scripts
-
-There are several scripts available for maintainers:
-
-- `make check` -- Execute validation checks; also used in continuous integration.
-- `make fix` -- Perform automatic fixes where possible
-- `make update-auto` -- Run automatic updates from external sources, executed regularly (GitHub action)
-- `make add-token asset_id=c60_t0x4Fabb145d64652a948d72533023f6E7A623C7C53` -- Create `info.json` file as asset template.
-- `make add-tokenlist asset_id=c60_t0x4Fabb145d64652a948d72533023f6E7A623C7C53` -- Adds a token to tokenlist.json.
-- `make add-tokenlist-extended asset_id=c60_t0x4Fabb145d64652a948d72533023f6E7A623C7C53` -- Adds a token to tokenlist-extended.json.
-
-## On Checks
-
-This repo contains a set of scripts for verification of all the information. Implemented as Golang scripts, available through `make check`, and executed in CI build; checks the whole repo.
-There are similar check logic implemented:
-
-- in assets-management app; for checking changed token files in PRs, or when creating a PR.  Checks diffs, can be run from browser environment.
-- in merge-fee-bot, which runs as a GitHub app shows result in PR comment. Executes in a non-browser environment.
-
-## Trading pair maintenance
-
-Info on supported trading pairs are stored in `tokenlist.json` files.
-Trading pairs can be updated --
-from Uniswap/Ethereum and PancakeSwap/Smartchain -- using update script (and checking in changes).
-Minimal limit values for trading pair inclusion are set in the [config file](https://github.com/trustwallet/assets/blob/master/.github/assets.config.yaml).
-There are also options for force-include and force-exclude in the config.
-
-## Disclaimer
-
-Trust Wallet team allows anyone to submit new assets to this repository. However, this does not mean that we are in direct partnership with all of the projects.
-
-Trust Wallet team will reject projects that are deemed as scam or fraudulent after careful review.
-Trust Wallet team reserves the right to change the terms of asset submissions at any time due to changing market conditions, risk of fraud, or any other factors we deem relevant.
-
-Additionally, spam-like behavior, including but not limited to mass distribution of tokens to random addresses will result in the asset being flagged as spam and possible removal from the repository.
-
-## License
-
-The scripts and documentation in this project are released under the [MIT License](LICENSE)
+*Note: The directories [`blockchains/`](./blockchains), [`cmd/`](./cmd), [`internal/`](./internal), [`dapps/`](./dapps), and other files in this fork are the property of TrustWallet and its contributors, licensed under the terms in [LICENSE](./LICENSE). This README documents my contributions and submissions only.*
